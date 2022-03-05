@@ -1,1 +1,10 @@
 <h1>FILMS</h1>
+<div id="films">
+    {{#each films}}
+    {{#with this}}
+        <article>
+            <img src="{{posterURL}}" alt="film-poster">
+        </article>
+    {{/with}}
+    {{/each}}
+</div>
