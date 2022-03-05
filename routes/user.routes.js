@@ -76,7 +76,7 @@ router.post('/login', (req, res, next) => {
  
 router.get('/user/:id/home', (req, res) => {
   const {id} = req.params;
-  
+
   if (!req.user) {
     res.redirect('/login'); // can't access the page, so go and log in
     return;
@@ -113,7 +113,7 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
     successRedirect: "/profile",
-    failureRedirect: "/" // here you would redirect to the login page using traditional login approach
+    failureRedirect: "/" 
   })
 );
 
