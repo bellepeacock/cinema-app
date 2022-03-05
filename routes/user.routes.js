@@ -47,7 +47,9 @@ router.post('/signup', (req, res, next) => {
     .catch(err => next(err));
 });
 
-router.get('/login', (req, res, next) => res.render('auth-views/login'));
+router.get('/login', (req, res, next) => {
+  res.render('auth-views/login', { errorMessage: req.flash('error') });
+});
 
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, theUser, failureDetails) => {
@@ -72,7 +74,7 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
  
-router.get('/{{_id}}', (req, res) => {
+router.get('/user/{{_id}}/home', (req, res) => {
   if (!req.user) {
     res.redirect('/login'); // can't access the page, so go and log in
     return;
@@ -82,11 +84,35 @@ router.get('/{{_id}}', (req, res) => {
   res.render('./user-views/user-home', { user: req.user });
 });
 
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+  })
+);
+
 router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/login');
 });
 
-
+router.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/",
+    failureRedirect: "/" // here you would redirect to the login page using traditional login approach
+  })
+);
 
 module.exports = router;

@@ -11,7 +11,14 @@
     <nav>
         <a href="/">Home</a>
         <a href="/signup">Sign up</a>
-        <a href="/login">Log in</a>
+        
+{{#unless user}}
+  Home page
+  <div>
+    <a href="/auth/google">Login With Google</a>
+  </div>
+{{/unless}}
+
         <a href="/logout">Log out</a>
 
     </nav>

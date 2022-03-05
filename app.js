@@ -3,6 +3,7 @@ require('dotenv').config();
 require('./db/index');
 const configure = require('./config');
 const app = express();
+const flash = require('connect-flash');
 
 configure(app);
 
@@ -16,6 +17,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('./models/User.model.js');
+
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 app.listen(PORT, () => {
   console.log(`Server listening on port http://localhost:${PORT}`);
@@ -36,6 +39,8 @@ app.use(
     })
   })
 )
+
+app.use(flash());
 
 passport.serializeUser((user, cb) => cb(null, user._id));
  
@@ -67,6 +72,37 @@ passport.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: "630266211498-qng7h2vk90iu8d8qs7u5vuses676fqo4.apps.googleusercontent.com",
+      clientSecret: "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",
+      callbackURL: "/auth/google/callback"
+    },
+    (accessToken, refreshToken, profile, done) => {
+      // to see the structure of the data in received response:
+      console.log("Google account details:", profile);
+ 
+      User.findOne({ googleID: profile.id })
+        .then(user => {
+          if (user) {
+            done(null, user);
+            return;
+          }
+ 
+          User.create({ googleID: profile.id })
+            .then(newUser => {
+              done(null, newUser);
+            })
+            .catch(err => done(err)); // closes User.create()
+        })
+        .catch(err => done(err)); // closes User.findOne()
+    }
+  )
+);
+
+
 
 // routes starting here: 
 const index = require("./routes/index.routes");
