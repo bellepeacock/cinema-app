@@ -1,8 +1,15 @@
-body {
-
+#films {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    gap: 20px;
+    box-sizing: content-box;
 }
 
-#section-films {
-    display: grid;
-    
+article {
+    box-sizing: content-box;
+}
+
+article > img {
+    box-sizing: content-box;
+    max-width: 100%;
 }
