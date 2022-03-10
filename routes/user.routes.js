@@ -89,14 +89,14 @@ router.get('/user/{{_id}}/home', (req, res) => {
   res.render('./user-views/user-home', { user: req.user });
 });
 
-// router.post(
-//   '/login',
-//   passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/login',
-//     failureFlash: true
-//   })
-// );
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+  })
+);
 
 router.get('/logout', (req, res) => {
   req.logout();
@@ -115,7 +115,8 @@ router.get(
 router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: "/profile",
+    // successRedirect: "/profile",
+    successRedirect: "/",
     failureRedirect: "/" 
   })
 );

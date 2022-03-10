@@ -10,8 +10,8 @@ router.get("/", (req, res, next) => {
 
 
 router.get("/profile", (req, res, next) => {
-    console.log(req.session)
-    User.findById(req.session.passport.user).then(u => console.log(u)).catch(e => console.log(e))
+    // console.log(req.session)
+    // User.findById(req.session.passport.user).then(u => console.log(u)).catch(e => console.log(e))
     res.render("index");
 });
 
