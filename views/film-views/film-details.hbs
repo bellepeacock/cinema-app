@@ -1,0 +1,19 @@
+{{!-- API film details --}}
+
+<h2>Comments</h2>
+
+<ul> {{#each comment}}
+    <li>
+        <p>{{name}}</p>
+        <p>{{content}}</p>
+    </li>
+
+    {{/each}}
+</ul>
+
+{{!-- same url action and then do a post request in the router --}}
+<form action="films/:id" method="post">
+<input type="text" name="user-name">
+<textarea name="comment-content" cols="100" rows="20" placeholder="Type your comment here..."></textarea>
+<input type="submit" />
+</form>
