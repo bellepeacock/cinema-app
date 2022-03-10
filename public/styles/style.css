@@ -86,7 +86,7 @@ article > h4:hover > .fa-heart {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
     background-color: aquamarine;
