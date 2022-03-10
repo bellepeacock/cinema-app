@@ -12,8 +12,23 @@
 </ul>
 
 {{!-- same url action and then do a post request in the router --}}
-<form action="films/:id" method="post">
-<input type="text" name="user-name">
+<h2>{{film.title}}</h2>
+<img src="{{film.image}}" alt="$`{{film.title}} title image`">
+
+{{!-- film api should have the location and language stuff --}}
+
+<h3>Comments:</h3>
+    <ul>{{#each film.comments}}
+        <li>
+            <p>{{this.userName}}</p>
+            <p>{{this.commentContent}}</p>
+            </li>
+        {{/each}}
+    </ul>
+
+<form action="/films/{{film._id}}" method="post" name="comment-form">
+<p>HERE IS THE ID: {{film._id}}</p>
+<input type="text" name="user-name" placeholder="Type your name here...">
 <textarea name="comment-content" cols="100" rows="20" placeholder="Type your comment here..."></textarea>
 <input type="submit" />
 </form>

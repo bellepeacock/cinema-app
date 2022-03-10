@@ -52,8 +52,11 @@ router.get('/login', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
+  console.log('starting here')
     passport.authenticate('local', (err, theUser, failureDetails) => {
+      console.log(theUser)
         if (err) {
+          console.log('error')
             // sthing wrong with authenticating user
             return next(err);
         }
@@ -75,7 +78,7 @@ router.post('/login', (req, res, next) => {
 });
  
 router.get('/user/{{_id}}/home', (req, res) => {
-  // const {id} = req.params;
+  const {id} = req.params;
 
   if (!req.user) {
     res.redirect('/login'); // can't access the page, so go and log in
@@ -86,14 +89,14 @@ router.get('/user/{{_id}}/home', (req, res) => {
   res.render('./user-views/user-home', { user: req.user });
 });
 
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-  })
-);
+// router.post(
+//   '/login',
+//   passport.authenticate('local', {
+//     successRedirect: '/',
+//     failureRedirect: '/login',
+//     failureFlash: true
+//   })
+// );
 
 router.get('/logout', (req, res) => {
   req.logout();

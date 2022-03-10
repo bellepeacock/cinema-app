@@ -111,7 +111,7 @@ app.use("/", index);
 const router = require('./routes/user.routes.js');
 app.use('/', router);
 
-const filmRouter = require('./routes/user.routes.js');
+const filmRouter = require('./routes/films.routes.js');
 app.use('/', filmRouter);
 
 // require("./error-handling")(app);

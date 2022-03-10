@@ -11,8 +11,8 @@ router.get("/", (req, res, next) => {
 
 router.get("/profile", (req, res, next) => {
     console.log(req.session)
-    res.render("index");
     User.findById(req.session.passport.user).then(u => console.log(u)).catch(e => console.log(e))
+    res.render("index");
 });
 
 module.exports = router;

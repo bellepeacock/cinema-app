@@ -2,7 +2,6 @@
 
 const router = require("express").Router();
 
-const Comment = require('../models/Comment.model');
 const Film = require('../models/Film.model');
 
 
@@ -11,6 +10,7 @@ router.get("/films/:id", (req, res) => {
     console.log(id)
     Film.findById(id)
         .then(film => {
+            console.log(film)
             res.render('film-views/film-details', { film })
         }).catch(e => console.error(e))
 })
@@ -19,7 +19,7 @@ router.get("/films/:id", (req, res) => {
 router.post('/films/:id', (req, res, next) => {
     const { userName, commentContent } = req.body;
 
-    Comment.create({ userName, commentContent})
+    Comment.create({ userName, commentContent })
     .then(allComments => {
         res.render('film-views/film-details', {comments: allComments})
     })

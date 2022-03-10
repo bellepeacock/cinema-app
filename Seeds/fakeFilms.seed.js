@@ -18,6 +18,7 @@ mongoose.connect(MONGO_URI, {
           language: ["EN", "FR", "ES"],
           cinemas: ["rollberg", "sputnik"],
           // times / dates 
+          // move this to new comments model
           comments: [{userName: "jeremy", commentContent: "This film is great."}, {userName: "Sophia", commentContent:"this film is not good."}]
       }, 
       {
