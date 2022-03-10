@@ -9,7 +9,7 @@ class ApiISService {
   }
 
   getFilms() {
-    return this.api.get('/movies/?page_size=12');
+    return this.api.get('/movies/?page_size=18');
   }
 
   getCinemas() {

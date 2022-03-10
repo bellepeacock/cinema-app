@@ -1,13 +1,16 @@
 <h1>FILMS</h1>
 <div id="films">
-    {{!-- {{#each films}}
+    {{#each films}}
     {{#with this}}
         <article>
-            <img src="{{posterURL}}" alt="film-poster">
+            <a href="/films/{{id}}" class="img-film">
+                <img src="{{poster_image_thumbnail}}" alt="{{slug}}">
+                <h5 class="details">----See Details----</h5>
+            </a>
             <h4>{{title}} <i class="far fa-heart"></i></h4>
         </article>
     {{/with}}
-    {{/each}} --}}
+    {{/each}}
 
 
     {{!-- 
@@ -17,11 +20,11 @@
     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     --}}
 
-    <article>
-        <div class="img-film">
+    {{!-- <article>
+        <a href="" class="img-film">
             <img src="images/the-godfather.jpg" alt="film-poster">
             <h5 class="details">----See Details----</h5>
-        </div>
+        </a>
         <h4>The GodFather <i class="far fa-heart"></i></h4>
     </article>
 
@@ -78,7 +81,7 @@
     <article>
         <img src="images/north-by-nothwest.jpg" alt="film-poster">
         <h4>North By Northwest <i class="far fa-heart"></i></h4>
-    </article>
+    </article>  --}}
 
 </div>
 
