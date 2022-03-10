@@ -11,11 +11,17 @@
 <body>
     <header>
         <nav>
-            <div id="header-icon">
-
+            <div id="header-logo">
+                <h1>CINEMA-APP <i class="fas fa-film" id="icon-cinema" ></i></h1>
             </div>
             <div id="header-search-bar">
-
+                <form action="" method="post">
+                    <i class="fas fa-search"></i>
+                    <input type="text" name="search" placeholder="Title, artist, genre">
+                    <input type="text" name="location" placeholder="Location">
+                    <input type="text" name="language" placeholder="Language">
+                    <input type="submit" value="Search" id="submit">
+                </form>
             </div>
             <div id="header-auth">
                 {{#if user}}
@@ -33,7 +39,7 @@
     </section>
 
     <footer>
-        By Annabelle & Rick for you. Happy conding! <i class="fas fa-heart liked"></i>
+        By Annabelle & Rick for you. Happy coding! <i class="fas fa-heart liked"></i>
     </footer>
 
 </body>

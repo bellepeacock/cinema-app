@@ -12,11 +12,29 @@ header {
     padding: 1rem;
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header-logo > h1 {
+    margin: 0;
+}
+
+#icon-cinema {
+    transform: rotate(-30deg);
+}
+
+#header-search-bar > form > input,
 #header-auth > a {
     text-decoration: none;
     border-radius: 0.5rem;
     padding: 0.5rem;
-    border: 1px black solid;
+    border: 1px solid wheat;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
     color: black;
 }
 
@@ -35,6 +53,10 @@ h1 {
     text-align: center;
 }
 
+h1:hover {
+    cursor: default;
+}
+
 article {
     box-sizing: content-box;
     max-height: 100%;
@@ -49,6 +71,14 @@ article > img {
     box-sizing: content-box;
     max-width: 100%;
     max-height: 90%;
+}
+
+article > h4:hover {
+    cursor: pointer;
+}
+
+article > h4:hover > .fa-heart {
+    color: red;
 }
 
 .liked {
