@@ -74,8 +74,8 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
  
-router.get('/user/:id/home', (req, res) => {
-  const {id} = req.params;
+router.get('/user/{{_id}}/home', (req, res) => {
+  // const {id} = req.params;
 
   if (!req.user) {
     res.redirect('/login'); // can't access the page, so go and log in
