@@ -1,15 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+}
+
+header {
+    background-color: aqua;
+    padding: 1rem;
+}
+
+#header-auth > a {
+    text-decoration: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: 1px black solid;
+    color: black;
+}
+
 #films {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    gap: 20px;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-template-rows: 20rem 20rem 20rem;
+    gap: 1%;
     box-sizing: content-box;
+    max-height: 100%;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+h1 {
+    text-align: center;
 }
 
 article {
     box-sizing: content-box;
+    max-height: 100%;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 article > img {
     box-sizing: content-box;
     max-width: 100%;
+    max-height: 90%;
+}
+
+.liked {
+    color: red;
+}
+
+footer {
+    background-color: aquamarine;
+    padding: 1rem;
+    text-align: center;
 }
