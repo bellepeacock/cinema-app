@@ -4,24 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{!-- import css --}}
     <title>Cinema App</title>
+    {{!-- import css --}}
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/7187492eea.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/signup">Sign up</a>
-        
-{{#unless user}}
-  Home page
-  <div>
-    <a href="/auth/google">Login With Google</a>
-  </div>
-{{/unless}}
+    <header>
+        <nav>
+            <div id="header-logo">
+                <h1>CINEMA-APP <i class="fas fa-film" id="icon-cinema" ></i></h1>
+            </div>
+            <div id="header-search-bar">
+                <form action="" method="post">
+                    <i class="fas fa-search"></i>
+                    <input type="text" name="search" placeholder="Title, artist, genre">
+                    <input type="text" name="location" placeholder="Location">
+                    <input type="text" name="language" placeholder="Language">
+                    <input type="submit" value="Search" id="submit">
+                </form>
+            </div>
+            <div id="header-auth">
+                {{#if user}}
+                    <a href="/">Home</a>
+                    <a href="/logout">Logout</a>
+                {{else}}
+                    <a href="/login">Login</a>
+                    <a href="/signup">Sign Up</a>
+                {{/if}}
+            </div>
+        </nav>
+    </header>
 
-        <a href="/logout">Log out</a>
+    <section id="section-films">
+        {{{body}}}
+    </section>
 
-    </nav>
-    {{{body}}}
+    <footer>
+        By Annabelle & Rick for you. Happy coding! <i class="fas fa-heart liked"></i>
+    </footer>
+
 </body>
 </html>

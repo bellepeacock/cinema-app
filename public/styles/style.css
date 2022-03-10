@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+}
+
+header {
+    background-color: aqua;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header-logo > h1 {
+    margin: 0;
+}
+
+#icon-cinema {
+    transform: rotate(-30deg);
+}
+
+#header-search-bar > form > input,
+#header-auth > a {
+    text-decoration: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid wheat;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    color: black;
+}
+
+#films {
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-template-rows: 20rem 20rem 20rem;
+    gap: 1%;
+    box-sizing: content-box;
+    max-height: 100%;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1:hover {
+    cursor: default;
+}
+
+article {
+    box-sizing: content-box;
+    max-height: 100%;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+article > img {
+    box-sizing: content-box;
+    max-width: 100%;
+    max-height: 90%;
+}
+
+article > h4:hover {
+    cursor: pointer;
+}
+
+article > h4:hover > .fa-heart {
+    color: red;
+}
+
+.liked {
+    color: red;
+}
+
+footer {
+    background-color: aquamarine;
+    padding: 1rem;
+    text-align: center;
+}
