@@ -29,11 +29,9 @@ router.get('/:id', (req, res, next) => {
 });
 
 
-
-
 //check case for keys
 // router.post('/films/:id', (req, res, next) => {
-//     const { userName, commentContent } = req.body;
+//     const { username, content } = req.body;
 // // instead of this create comments as a model and then link the comments with the films via populate
 //     Comment.create({ username, content })
 //     .then(allComments => {

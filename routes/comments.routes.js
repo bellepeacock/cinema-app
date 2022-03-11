@@ -12,7 +12,7 @@ router.get("/films/:id", (req, res) => {
     Comment.findById(id)
         .then(comment => {
             console.log(comment)
-            res.render('film-views/film-details', { film, comment })
+            res.render('film-views/film-details', { comment })
         }).catch(e => console.error(e))
 })
 
