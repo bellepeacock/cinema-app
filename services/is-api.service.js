@@ -12,6 +12,10 @@ class ApiISService {
     return this.api.get('/movies/?page_size=18');
   }
 
+  getFilm(id) {
+    return this.api.get(`/movies/${id}`);
+  }
+
   getCinemas() {
     return this.api.get('/cinemas');
   }

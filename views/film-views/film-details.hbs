@@ -1,0 +1,24 @@
+<article id="film-details" class="row">
+    {{#with film}}
+        <div class="col">
+            <img src="{{poster_image.image_files.6.url}}" alt="{{slug}}">
+            <h4>{{title}} directed by {{crew.0.name}} <i class="far fa-heart"></i></h4>           
+        </div>
+        <div class="col">
+            <p>
+                {{#each genres}}
+                    <a class="genre" href="">{{this.name}}</a>
+                {{/each}}
+            </p>
+            <p><b>Synopsis:</b>  {{synopsis}}</p>
+            <div class="cast">
+                Cast:
+                <ul>
+                {{#each cast}}
+                    <li>{{this.name}} as {{this.character}}</li>
+                {{/each}}    
+                </ul>
+            </div>
+        </div>
+    {{/with}}
+</article>
