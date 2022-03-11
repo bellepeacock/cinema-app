@@ -19,7 +19,8 @@ mongoose.connect(MONGO_URI, {
           cinemas: ["rollberg", "sputnik"],
           // times / dates 
           // move this to new comments model
-          comments: [{userName: "jeremy", commentContent: "This film is great."}, {userName: "Sophia", commentContent:"this film is not good."}]
+          comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
+          //comments: [{userName: "jeremy", commentContent: "This film is great."}, {userName: "Sophia", commentContent:"this film is not good."}]
       }, 
       {
         title: "Queen & Slim",
@@ -29,8 +30,9 @@ mongoose.connect(MONGO_URI, {
         description: "This is a tragic romance film",
         language: ["EN", "IT"],
         cinemas: "sputnik",
+        comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
         // times / dates 
-        comments: [{userName: "jeremy", commentContent: "This film is so sad"}]
+        // comments: [{userName: "jeremy", commentContent: "This film is so sad"}]
     }, 
     {
         title: "Lamb",
@@ -40,8 +42,9 @@ mongoose.connect(MONGO_URI, {
         description: "This is a weird film",
         language: "EN", 
         cinemas: ["sputnik", "Delphi Lux", "Passenger"],
+        comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
         // times / dates 
-        comments: [],
+        // comments: [],
     }
   ];
 

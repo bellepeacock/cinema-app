@@ -8,7 +8,6 @@ router.get("/", (req, res, next) => {
     }).catch(err => console.err(err))
 });
 
-
 router.get("/profile", (req, res, next) => {
     // console.log(req.session)
     // User.findById(req.session.passport.user).then(u => console.log(u)).catch(e => console.log(e))
