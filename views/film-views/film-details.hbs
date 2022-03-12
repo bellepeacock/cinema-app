@@ -1,0 +1,34 @@
+{{!-- API film details --}}
+{{!-- 
+<h2>Comments</h2>
+
+<ul> {{#each comment}}
+    <li>
+        <p>{{name}}</p>
+        <p>{{content}}</p>
+    </li>
+
+    {{/each}}
+</ul> --}}
+
+{{!-- same url action and then do a post request in the router --}}
+<h2>{{film.title}}</h2>
+<img src="{{film.image}}" alt="$`{{film.title}} title image`">
+
+{{!-- film api should have the location and language stuff --}}
+
+<h3>Comments:</h3>
+    <ul>{{#each film.comments}}
+        <li>
+            <p>{{this.username}}</p>
+            <p>{{this.content}}</p>
+            </li>
+        {{/each}}
+    </ul>
+
+<form action="/films/{{film._id}}" method="post" name="comment-form">
+{{!-- <p>HERE IS THE ID: {{film._id}}</p> --}}
+<input type="text" name="username" placeholder="Type your name here...">
+<textarea name="content" cols="100" rows="20" placeholder="Type your comment here..."></textarea>
+<input type="submit" />
+</form>

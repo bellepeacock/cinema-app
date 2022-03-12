@@ -1,8 +1,13 @@
-// const CommentModel = Schema ({
-//     name: String,
-//     content: String,
-//     owner: {
-//         type: Schema.Types.ObjectId
-//         ref: 'User'
-//     }
-// })
+const { Schema, model } = require("mongoose");
+
+const commentSchema = new Schema (
+    {
+        username: String,
+        content: String
+    },
+    { 
+        timestamps: true
+    }
+);
+
+module.exports = model('Comment', commentSchema);
