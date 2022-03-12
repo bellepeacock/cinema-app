@@ -3,6 +3,7 @@ const router = new Router();
  
 
 const User = require('../models/User.model.js');
+const Email = require('../models/User.model.js');
 const passport = require('passport');
  
 
@@ -12,22 +13,25 @@ const bcryptSalt = 10;
 router.get('/signup', (req, res, next) => res.render('auth-views/signup'));
  
 router.post('/signup', (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
  
 
-  if (!username || !password) {
+  if (!username || !email || !password) {
     res.render('auth-views/signup', { errorMessage: 'Indicate username and password' });
     return;
   }
 
   User.find().then(u => console.log(u)).catch(e => console.log(e))
   console.log('User')
+
+  Email.find().then(email => console.log(email)).catch(e => console.log(e))
+  console.log('Email')
  
-  User.findOne({ username })
+  User.findOne({ username, email })
     .then(user => {
       console.log(user)
-      if (user !== null) {
-        res.render('auth-views/signup', { message: 'The username already exists' });
+      if (user && email !== null) {
+        res.render('auth-views/signup', { message: 'The email/username already exists' });
         return;
       }
 
@@ -36,6 +40,7 @@ router.post('/signup', (req, res, next) => {
  
       const newUser = new User({
         username,
+        email,
         password: hashPass
       });
  
@@ -48,7 +53,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('auth-views/login', { errorMessage: req.flash('error') });
+  res.render('auth-views/login', { user: req.params });
 });
 
 router.post('/login', (req, res, next) => {
@@ -62,7 +67,7 @@ router.post('/login', (req, res, next) => {
         }
 
         if (!theUser) {
-            res.render('auth-views/login', { errorMessage:"Wrong password or username"});
+            res.render('auth-views/login', { errorMessage:"Wrong login credentials"});
             return;
         }
         //save the user in session
