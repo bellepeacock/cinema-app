@@ -5,6 +5,7 @@ const Film = require('../models/Film.model');
 
 const apiIS = new ApiIS();
 
+<<<<<<< HEAD
 // router.get("/films/:id", async (req, res, next) => {
 //     const filmId = req.params.id;
 //     try {
@@ -49,6 +50,35 @@ router.get('/:id', (req, res, next) => {
 });
 
 
+=======
+// films/:id/details
+router.get("/films/:id", async (req, res, next) => {
+    const filmId = req.params.id;
+    try {
+        //Obtaining the info (film details) from the API
+        const resFromApi = await apiIS.getFilm(filmId);
+        const filmFromAPI = resFromApi.data.movie;
+        
+        //The API returns all of the cast, but I only want to show a few of them.
+        //The slice is to get the first ten.
+        const cast = [...filmFromAPI.cast].slice(0,10);
+        filmFromAPI.cast = cast;
+
+        //Obtaining the info of the comments
+        Film.findOne({ id: filmId })
+            .populate('comments')
+            .populate('username')
+            .then((filmFromDbWithComments) => {
+                res.render("film-views/film-details", { filmFromAPI , filmFromDbWithComments } );
+            })
+            .catch(error => console.error(error));
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+>>>>>>> c2a8efc (We modified the atributes of the models, merge the content of the films.routes)
 //check case for keys
 // router.post('/films/:id', (req, res, next) => {
 //     const { username, content } = req.body;
