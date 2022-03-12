@@ -1,6 +1,11 @@
 <h2>Signup</h2>
  
 <form action="/signup" method="POST" id="form-container">
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" name="email">
+ </div>
+
  <div>
   <label for="username">Username</label>
   <input id="username" type="text" name="username">
@@ -17,6 +22,7 @@
  
  <div>
   <button>Create account</button>
+  {{!-- this needs to submit or do something! Submit or redirect to home page--}}
  </div>
  
  <p class="account-message">
