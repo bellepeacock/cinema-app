@@ -20,8 +20,12 @@ router.get("/films/:id", async (req, res, next) => {
 
         //Obtaining the info of the comments
         Film.findOne({ id: filmId })
-            .populate('comments')
-            .populate('username')
+            .populate({
+                path : 'comments',
+                populate : {
+                  path : 'username'
+                }
+              })
             .then((filmFromDbWithComments) => {
                 res.render("film-views/film-details", { filmFromAPI , filmFromDbWithComments } );
             })
