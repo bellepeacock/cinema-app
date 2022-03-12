@@ -114,6 +114,12 @@ app.use('/', userRoutes);
 const filmsRoutes = require('./routes/films.routes.js');
 app.use('/', filmsRoutes);
 
+const filmRouter = require('./routes/films.routes.js');
+app.use('/', filmRouter);
+
+const commentRouter = require('./routes/comments.routes.js');
+app.use('/', commentRouter)
+
 // require("./error-handling")(app);
 
 module.exports = app;
