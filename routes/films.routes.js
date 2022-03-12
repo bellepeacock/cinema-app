@@ -23,7 +23,7 @@ router.get('/:id', (req, res, next) => {
         .populate('comments')
         .then((filmById) => {
             Comment.find()
-            .then((comment) => {res.render('/films/:id', {filmById, film})
+            .then((comment) => {res.render('film-views/films-details', {filmById, film})
             });
         }).catch(error => console.error(error))
 });
