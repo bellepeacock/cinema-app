@@ -53,7 +53,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('auth-views/login', { errorMessage: req.flash('error') });
+  res.render('auth-views/login', { user: req.params });
 });
 
 router.post('/login', (req, res, next) => {
