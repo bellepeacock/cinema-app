@@ -105,11 +105,14 @@ passport.use(
 
 
 // routes starting here: 
-const index = require("./routes/index.routes");
-app.use("/", index);
+const indexRoutes = require("./routes/index.routes");
+app.use("/", indexRoutes);
 
-const router = require('./routes/user.routes.js');
-app.use('/', router);
+const userRoutes = require('./routes/user.routes.js');
+app.use('/', userRoutes);
+
+const filmsRoutes = require('./routes/films.routes.js');
+app.use('/', filmsRoutes);
 
 const filmRouter = require('./routes/films.routes.js');
 app.use('/', filmRouter);
