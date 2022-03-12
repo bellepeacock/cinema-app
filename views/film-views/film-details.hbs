@@ -1,5 +1,5 @@
 <article id="film-details" class="row">
-    {{#with film}}
+    {{#with filmFromAPI}}
         <div class="col">
             <img src="{{poster_image.image_files.6.url}}" alt="{{slug}}">
             <h4>{{title}} directed by {{crew.0.name}} <i class="far fa-heart"></i></h4>           
@@ -22,27 +22,11 @@
         </div>
     {{/with}}
 </article>
-{{!-- API film details --}}
-{{!-- 
-<h2>Comments</h2>
-
-<ul> {{#each comment}}
-    <li>
-        <p>{{name}}</p>
-        <p>{{content}}</p>
-    </li>
-
-    {{/each}}
-</ul> --}}
-
-{{!-- same url action and then do a post request in the router --}}
-<h2>{{film.title}}</h2>
-<img src="{{film.image}}" alt="$`{{film.title}} title image`">
 
 {{!-- film api should have the location and language stuff --}}
 
 <h3>Comments:</h3>
-    <ul>{{#each film.comments}}
+    <ul>{{#each filmFromDbWithComments.comments}}
         <li>
             <p>{{this.username}}</p>
             <p>{{this.content}}</p>
@@ -50,7 +34,7 @@
         {{/each}}
     </ul>
 
-<form action="/films/{{film._id}}" method="post" name="comment-form">
+<form action="/films/{{filmFromAPI.id}}" method="post" name="comment-form">
 {{!-- <p>HERE IS THE ID: {{film._id}}</p> --}}
 <input type="text" name="username" placeholder="Type your name here...">
 <textarea name="content" cols="100" rows="20" placeholder="Type your comment here..."></textarea>
