@@ -1,0 +1,17 @@
+<h1>CINEMAS</h1>
+<div id="cinemas">
+    {{#each cinemas}}
+    {{#with this}}
+        <article>
+            <a href="/cinemas/{{id}}" class="img-cinema">
+                <img src="{{poster_image_thumbnail}}" alt="{{slug}}">
+                <h5 class="details">----See Details----</h5>
+            </a>
+            <h4>{{title}} <i class="far fa-heart"></i></h4>
+        </article>
+    {{/with}}
+    {{/each}}
+
+</div>
+
+<script src="src/index.js"></script>
