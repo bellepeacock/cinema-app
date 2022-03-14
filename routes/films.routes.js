@@ -5,6 +5,17 @@ const Film = require('../models/Film.model');
 
 const apiIS = new ApiIS();
 
+router.get("/films", async (req, res, next) => {
+    try {
+        const resFromApi = await apiIS.getFilms();
+        const films = resFromApi.data.movies;
+        console.log(films);
+        res.render("film-views/films", { films } );
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 // films/:id/details
 router.get("/films/:id", async (req, res, next) => {
     const filmId = req.params.id;

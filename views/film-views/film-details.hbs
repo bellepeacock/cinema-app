@@ -2,7 +2,8 @@
     {{#with filmFromAPI}}
         <div class="col">
             <img src="{{poster_image.image_files.6.url}}" alt="{{slug}}">
-            <h4>{{title}} directed by {{crew.0.name}} <i class="far fa-heart"></i></h4>           
+            <h4><span class="big">{{title}}</span> <i class="far fa-heart"></i></h4>
+            <h5>directed by: <span class="big">{{crew.0.name}}</span> </h5>          
         </div>
         <div class="col">
             <p>
@@ -12,10 +13,10 @@
             </p>
             <p><b>Synopsis:</b>  {{synopsis}}</p>
             <div class="cast">
-                Cast:
+                <b>Cast:</b> 
                 <ul>
                 {{#each cast}}
-                    <li>{{this.name}} as {{this.character}}</li>
+                    <li><span class="big">{{this.name}}</span> as <span class="big">{{this.character}}</span></li>
                 {{/each}}    
                 </ul>
             </div>
