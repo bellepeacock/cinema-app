@@ -1,17 +1,17 @@
-<h1>CINEMAS</h1>
-<div id="cinemas">
-    {{#each cinemas}}
-    {{#with this}}
-        <article>
-            <a href="/cinemas/{{id}}" class="img-cinema">
-                <img src="{{poster_image_thumbnail}}" alt="{{slug}}">
-                <h5 class="details">----See Details----</h5>
-            </a>
-            <h4>{{title}} <i class="far fa-heart"></i></h4>
-        </article>
-    {{/with}}
-    {{/each}}
-
+<div id="section-cinemas">
+    <h1>CINEMAS</h1>
+    <div id="cinemas">
+        {{#each cinemas}}
+        {{#with this}}
+            <article>
+                <div class="map" name="{{slug}}" lat="{{location.lat}}" lng="{{location.lon}}"></div>
+                <h4><a href="/cinemas/{{id}}">{{name}}</a> <i class="far fa-heart"></i></h4>
+                <h5> <a href="{{website}}">Go to the web...</a></h5>
+            </article>
+        {{/with}}
+        {{/each}}
+    </div>
 </div>
 
+<script src="https://maps.googleapis.com/maps/api/js?key={{googleApiKey}}"></script>
 <script src="src/index.js"></script>

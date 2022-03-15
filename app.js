@@ -114,11 +114,11 @@ app.use('/', userRoutes);
 const filmsRoutes = require('./routes/films.routes.js');
 app.use('/', filmsRoutes);
 
-const filmRouter = require('./routes/films.routes.js');
-app.use('/', filmRouter);
+const cinemasRouter = require('./routes/cinemas.routes.js');
+app.use('/', cinemasRouter);
 
 const commentRouter = require('./routes/comments.routes.js');
-app.use('/', commentRouter)
+app.use('/', commentRouter);
 
 // require("./error-handling")(app);
 

@@ -17,7 +17,11 @@ class ApiISService {
   }
 
   getCinemas() {
-    return this.api.get('/cinemas');
+    return this.api.get('/cinemas/?limit=18');
+  }
+
+  getCinema(id) {
+    return this.api.get(`/cinemas/${id}`);
   }
 
   getShowtimes(){

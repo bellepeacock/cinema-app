@@ -125,8 +125,14 @@ nav {
     box-shadow: 0.3rem 0 blueviolet, 0.4rem 0 white, 0.2rem 0 white, 0.4rem 0 white;
 }
 
-#section-films {
+#section-films,
+#section-cinemas {
     margin-bottom: 10vh;
+}
+
+.map {
+    height: 500px;
+    width: 100%;
 }
 
 .genre {
@@ -194,7 +200,8 @@ h1:hover {
     cursor: default;
 }
 
-#section-films > h1 {
+#section-films > h1,
+#section-cinemas > h1 {
     font-size: 2rem;
     letter-spacing: 0.4rem;
     text-shadow:  0 0 3px white, 3px 3px red, 3px 3px 3px white, 6px 6px blue;
