@@ -1,23 +1,19 @@
 const router = require('express').Router();
 const ApiIS = require("../services/is-api.service");
 
-const Film = require('../models/Film.model');
-
 const apiIS = new ApiIS();
 
-router.get("/films", async (req, res, next) => {
+router.get("/cinemas", async (req, res, next) => {
     try {
-        const resFromApi = await apiIS.getFilms();
-        const films = resFromApi.data.movies;
-        console.log(films);
-        res.render("film-views/films", { films } );
+        const resFromApi = await apiIS.getCinemas();
+        const cinemas = resFromApi.data.cinemas;
+        res.render("cinema-views/cinemas", { cinemas , googleApiKey: process.env.API_GOOGLE_KEY } );
     } catch (error) {
         console.log(error);
     }
 });
 
-// films/:id/details
-router.get("/films/:id", async (req, res, next) => {
+/* router.get("/cinemas/:id", async (req, res, next) => {
     const filmId = req.params.id;
     try {
         //Obtaining the info (film details) from the API
@@ -31,14 +27,9 @@ router.get("/films/:id", async (req, res, next) => {
 
         //Obtaining the info of the comments
         Film.findOne({ id: filmId })
-            .populate({
-                path : 'comments',
-                populate : {
-                  path : 'username'
-                }
-              })
+            .populate('comments')
+            .populate('username')
             .then((filmFromDbWithComments) => {
-                console.log("===========================>",filmFromDbWithComments);
                 res.render("film-views/film-details", { filmFromAPI , filmFromDbWithComments } );
             })
             .catch(error => console.error(error));
@@ -46,12 +37,6 @@ router.get("/films/:id", async (req, res, next) => {
     } catch (error) {
         console.log(error);
     }
-});
+}); */
 
 module.exports = router;
-
-
-// do a get request that for the filters that adds them to the URL, so it'll be localhost30000/berlin/english
-
-
-

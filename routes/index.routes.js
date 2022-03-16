@@ -1,8 +1,4 @@
 const router = require('express').Router();
-const User = require("../models/User.model");
-const ApiIS = require("../services/is-api.service");
-
-const apiIS = new ApiIS();
 
 router.get("/", async (req, res, next) => {
     try {
@@ -13,6 +9,7 @@ router.get("/", async (req, res, next) => {
     } catch (error) {
         console.log(error);
     }
+    res.render("index");
 });
 
 module.exports = router;

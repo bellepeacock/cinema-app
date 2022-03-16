@@ -1,0 +1,17 @@
+<div id="section-cinemas">
+    <h1>CINEMAS</h1>
+    <div id="cinemas">
+        {{#each cinemas}}
+        {{#with this}}
+            <article>
+                <div class="map" name="{{slug}}" lat="{{location.lat}}" lng="{{location.lon}}"></div>
+                <h4><a href="/cinemas/{{id}}">{{name}}</a> <i class="far fa-heart"></i></h4>
+                <h5> <a href="{{website}}">Go to the web...</a></h5>
+            </article>
+        {{/with}}
+        {{/each}}
+    </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{googleApiKey}}"></script>
+<script src="src/index.js"></script>

@@ -9,3 +9,27 @@ function changeHeartIcon(iconClasses){
 [...document.getElementsByClassName("fa-heart")].forEach( heart => heart.addEventListener( "click", event => {
     changeHeartIcon(event.target.classList);
 }));
+
+function startMaps() {
+    [...document.getElementsByClassName("map")].forEach(cinemaMap => {
+        const { lat, lng, name } = cinemaMap.attributes;
+        const cinema = {
+            lat: Number(lat.value),
+            lng: Number(lng.value)
+        };
+        const map = new google.maps.Map(
+            cinemaMap,
+            {
+                zoom: 14,
+                center: cinema
+            }
+        );
+        const cinemaMarker = new google.maps.Marker({
+            position: cinema,
+            map: map,
+            title: name
+        });
+    });
+}
+   
+window.addEventListener('load', () => startMaps());
