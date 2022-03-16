@@ -31,9 +31,14 @@ router.get("/films/:id", async (req, res, next) => {
 
         //Obtaining the info of the comments
         Film.findOne({ id: filmId })
-            .populate('comments')
-            .populate('username')
+            .populate({
+                path : 'comments',
+                populate : {
+                  path : 'username'
+                }
+              })
             .then((filmFromDbWithComments) => {
+                console.log("===========================>",filmFromDbWithComments);
                 res.render("film-views/film-details", { filmFromAPI , filmFromDbWithComments } );
             })
             .catch(error => console.error(error));
@@ -42,17 +47,6 @@ router.get("/films/:id", async (req, res, next) => {
         console.log(error);
     }
 });
-
-//check case for keys
-// router.post('/films/:id', (req, res, next) => {
-//     const { username, content } = req.body;
-// // instead of this create comments as a model and then link the comments with the films via populate
-//     Comment.create({ username, content })
-//     .then(allComments => {
-//         res.render('film-views/film-details', {comments: allComments})
-//     })
-//     .catch(err => console.err(err));
-// });
 
 module.exports = router;
 
