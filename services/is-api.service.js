@@ -9,7 +9,8 @@ class ApiISService {
   }
 
   getFilms() {
-    return this.api.get('/movies/?page_size=18');
+    const [ page_size, offset ] = arguments;
+    return this.api.get(`/movies/?page_size=${page_size}&offset=${offset}`);
   }
 
   getFilm(id) {
@@ -17,7 +18,7 @@ class ApiISService {
   }
 
   getCinemas() {
-    return this.api.get('/cinemas/?limit=18');
+    return this.api.get('/cinemas/?limit=15');
   }
 
   getCinema(id) {

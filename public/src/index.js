@@ -10,6 +10,14 @@ function changeHeartIcon(iconClasses){
     changeHeartIcon(event.target.classList);
 }));
 
+document.getElementById("next").addEventListener("click", (event) => {
+    //work with axios. Offset true.
+});
+
+document.getElementById("next").addEventListener("click", (event) => {
+    //work with axios. Offset false.
+});
+
 function startMaps() {
     [...document.getElementsByClassName("map")].forEach(cinemaMap => {
         const { lat, lng, name } = cinemaMap.attributes;
