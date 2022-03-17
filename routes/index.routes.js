@@ -1,4 +1,7 @@
 const router = require('express').Router();
+const ApiIS = require("../services/is-api.service");
+
+const apiIS = new ApiIS();
 
 router.get("/", async (req, res, next) => {
     try {
