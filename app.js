@@ -5,6 +5,7 @@ const configure = require('./config');
 const app = express();
 const flash = require('connect-flash');
 
+
 configure(app);
 
 const PORT = process.env.PORT;
@@ -101,7 +102,6 @@ passport.use(
     }
   )
 );
-
 
 
 // routes starting here: 

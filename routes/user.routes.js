@@ -102,12 +102,19 @@ router.post(
   })
 );
 
+// router.post('/logout', function(req, res){
+//   req.logout();
+//   res.redirect('/');
+// });
+
 router.get('/logout', (req, res) => {
-  req.logout();
+  req.session.destroy();
   //find passport version of the next line:
   // req.session.destroy;
-  res.redirect('/login');
+  res.redirect('/');
 });
+
+
 
 router.get(
   "/auth/google",
