@@ -43,12 +43,14 @@ router.get("/films/:id", async (req, res, next) => {
       .then((filmFromDbWithComments) => {
         filmFromDbWithComments = filmFromDbWithComments.comments.map(
           (element) => {
+              console.log("element",element)
             if (element.username === currentUser) {
               return {
                 username: element.username,
                 content: element.content,
                 isUserName: true,
                 filmId: filmId,
+                id:element._id
               };
             } else {
               return {
@@ -56,6 +58,7 @@ router.get("/films/:id", async (req, res, next) => {
                 content: element.content,
                 isUserName: false,
                 filmId: filmId,
+                id:element._id
               };
             }
           }
@@ -144,6 +147,16 @@ router.post("/films/:id/edit", async (req, res, next) => {
       console.log("errror====>", error);
     });
 });
+
+router.post("/films/:id/delete/:filmId", async (req, res, next) => {
+    Comment.findByIdAndDelete(req.params.id)
+        .then( ()=>{
+            console.log("delted")
+            res.redirect(`/films/${req.params.filmId}`)
+        }).catch(error => (console.log(error)))
+});
+    // delete function need comment objec id - this{{id}}
+
 
 module.exports = router;
 
