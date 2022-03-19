@@ -27,11 +27,13 @@
 {{!-- film api should have the location and language stuff --}}
 <div class="comment-section">
 <h3>Comments:</h3>
+
            
 
     <ul list-style-type="none" class="comment-list">{{#each filmFromDbWithComments}}
         <li class="comment" >
             <p>{{this.username}}</p>
+
             <p>{{this.content}}</p>
            {{#if isUserName}}
             <div class="comment-btns-group">
