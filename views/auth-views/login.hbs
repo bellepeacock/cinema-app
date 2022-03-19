@@ -1,28 +1,37 @@
-{{!-- get both hbs files working before putting them together! --}}
 
-<form action="/login" method="POST">
- <div>
- <label for="username">Username:</label>
- <input type="text" name="username">
+<div class="auth-container">
+<form action="/login" class="auth-form" method="POST">
+  <div class="auth-single">
+ <label for="email" class="form-label">Email </label>
+ <input type="email" name="email" class="form-entry">
  </div>
 
-  <div>
- <label for="email">Email:</label>
- <input type="email" name="email">
+ <div class="auth-single">
+ <label for="username" class="form-label">Username </label>
+ <input type="text" name="username" class="form-entry">
  </div>
  
- <div>
- <label for="password">Password:</label>
- <input type="password" name="password">
+ <div class="auth-single">
+ <label for="password" class="form-label">Password </label>
+ <input type="password" name="password" class="form-entry">
  </div>
 
-  <a href="/auth/google">Login With Google</a>
  
  {{#if errorMessage}}
  <div class="error-message">{{errorMessage}}</div>
  {{/if}}
  
  <div>
- <button>Log in</button>
+ <button class="auth-btn">Log in</button>
+ <p>
+    <a href="/auth/google" style="text-decoration:none;" class="google-auth">Login With Google </a> 
+</p>
  </div>
+     <p class="account-message">
+        Don't have an account?
+        <a href="/signup" style="text-decoration:none;" class="auth-btn" >Signup</a>
+    </p>
 </form>
+</div>
+
+

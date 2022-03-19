@@ -5,6 +5,7 @@ const configure = require('./config');
 const app = express();
 const flash = require('connect-flash');
 
+
 configure(app);
 
 const PORT = process.env.PORT;
@@ -30,12 +31,12 @@ app.use(
     resave: true,
     saveUninitialized: false, // <== false if you don't want to save empty session object to the store
     cookie: {
-      sameSite: 'none',
+      // sameSite: 'none',
       httpOnly: true,
-      maxAge: 60000 // 60 * 1000 ms === 1 min
+      maxAge: 6000000 // 60 * 1000 ms === 1 min
     },
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/db-name'
+      mongoUrl: process.env.MONGODB_URI
     })
   })
 )
@@ -101,7 +102,6 @@ passport.use(
     }
   )
 );
-
 
 
 // routes starting here: 

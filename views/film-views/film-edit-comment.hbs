@@ -1,0 +1,48 @@
+<article id="film-details" class="row">
+    {{#with filmFromAPI}}
+        <div class="col">
+            <img src="{{poster_image.image_files.6.url}}" alt="{{slug}}">
+            <h4><span class="big">{{title}}</span> <i class="far fa-heart"></i></h4>
+            <h5>directed by: <span class="big">{{crew.0.name}}</span> </h5>          
+        </div>
+        <div class="col">
+            <p>
+                {{#each genres}}
+                    <a class="genre" href="">{{this.name}}</a>
+                {{/each}}
+            </p>
+            <p><b>Synopsis:</b>  {{synopsis}}</p>
+            <div class="cast">
+                <b>Cast:</b> 
+                <ul>
+                {{#each cast}}
+                    <li><span class="big">{{this.name}}</span> as <span class="big">{{this.character}}</span></li>
+                {{/each}}    
+                </ul>
+            </div>
+        </div>
+    {{/with}}
+</article>
+
+{{!-- film api should have the location and language stuff --}}
+<div class="comment-section">
+<h3>Comments:</h3>
+           
+
+    <ul  class="comment-list">{{#each filmFromDbWithComments}}
+         {{#if isUserName}}
+        <li class="comment" list-style-type="none">
+            <p>{{this.username}}</p>
+            <form action="/films/{{id}}/edit" method="post">
+                <input type="text" name="editInput" value="{{this.content}}">
+              <div style="display: none;">  <input type="text" name="filmID" value="{{filmId}}"></div>
+                <button class="comment-btn" type="submit">Save</button>
+            </form>
+            </li>
+            {{/if}}
+        {{/each}}
+    </ul>
+</div>
+
+
+

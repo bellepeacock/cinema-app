@@ -8,13 +8,13 @@ mongoose.connect(MONGO_URI, {
     useUnifiedTopology: true,
   });
 
-  const comments = [
-      {
-          username: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-          film: [{ type: Schema.Types.ObjectId, ref: 'Film' }],
-          content: String
-      }
-  ];
+//   const comments = [
+//       {
+//           username: 'Belle',
+//           filmId: 'uwy3o3qxu4oe83nb',
+//           content: 'Amazinnnnggg movie'
+//       }
+//   ];
 
   Comment.create(films).then( (createdFilms) => {
       console.log(`Successfully created comment for ${comments.film}`);

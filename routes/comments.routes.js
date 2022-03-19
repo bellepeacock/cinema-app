@@ -2,29 +2,43 @@
 
 const router = require("express").Router();
 
-const Film = require('../models/Film.model');
-const Comment = require('../models/Comment.model');
-
-
-router.get("/films/:id", (req, res) => {
-    const { id } = req.params;
-    console.log(id)
-    Comment.findById(id)
-        .then(comment => {
-            console.log(comment)
-            res.render('film-views/film-details', { comment })
-        }).catch(e => console.error(e))
-})
+const Film = require("../models/Film.model");
+const Comment = require("../models/Comment.model");
+const User = require("../models/User.model");
 
 //check case for keys
-router.post('/films/:id', (req, res, next) => {
-    const { userName, commentContent } = req.body;
-// instead of this create comments as a model and then link the comments with the films via populate
-    Comment.create({ username, content })
-    .then(allComments => {
-        res.render('film-views/film-details', {comments: allComments})
-    })
-    .catch(err => console.err(err));
+router.post("/films/:id", async (req, res, next) => {
+  const id = req.params.id;
+  console.log("req.session", req.session);
+  const username = req.session.currentUser.username; // <== Look this
+  const { content } = req.body; // <== And this
+
+  try {
+    const commentCreatedID = await Comment.create({ username, content });
+
+    const isMovieExistInDataBase = await Film.findOneAndUpdate(
+      { id: id },
+      { $push: { comments: commentCreatedID._id } },
+      { new: true }
+    );
+    if (!isMovieExistInDataBase) {
+      await Film.create({ id: id });
+      await Film.findOneAndUpdate(
+        { id: id },
+        { $push: { comments: commentCreatedID._id } },
+        { new: true }
+      );
+    }
+
+    res.redirect(`/films/${id}`);
+  } catch (err) {
+    console.log(err);
+  }
 });
+
+
+// router.get("edit-comment", async (req, res, next) => {
+
+// })
 
 module.exports = router;

@@ -52,7 +52,9 @@ nav {
 
 #header-search-bar > form > input,
 #header-auth > a,
-select {
+.comment-btn,
+.form-entry,
+.auth-btn {
     text-decoration: none;
     font-weight: bold;
     border-radius: 0.5rem;
@@ -88,7 +90,8 @@ select {
     background-color: blueviolet;
 }
 
-#election > div {
+#election > div,
+.auth-form {
     border: 0.2rem solid white;
     border-radius: 0.5rem;
     padding: 2rem 2rem 4rem;
@@ -167,7 +170,8 @@ h5 {
     margin: 0;
 }
 
-.row {
+.row,
+.comment-btns-group {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -294,6 +298,113 @@ article > h4:hover > .fa-heart {
     height: 40%;
 }
 
+.auth-form {
+    align-content: center;
+    text-align: center; 
+    /* margin: 30vh 35vw;
+    padding: 10px; */
+    width: 30vw;
+    border: 0.2rem black solid;
+    border-radius: 0.5rem;
+    background-color: blueviolet;
+    /* display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+.auth-single {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form-label {
+    font-family: 'Roboto', sans-serif; 
+    font-weight: bold;
+    color: white;
+    margin: 5px 2px; 
+}
+
+.form-entry {
+    font-family: 'Roboto', sans-serif; 
+    font-weight: bold;
+    color: black;
+    margin: 5px 2px; 
+}
+
+.google-auth {
+    text-decoration: none;
+    color: white;
+  }
+
+.account-message,
+.auth-copy {
+    color: white;
+  }
+
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    margin: 0 35vw;
+    height: 100vh;
+    width: 75vh
+}
+
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    list-style: none;
+}
+
+.comment {
+    font-family: 'Roboto', sans-serif; 
+    font-weight: bold;
+    color: white;
+    background-color: blueviolet;
+    list-style-type: none;
+    width: 30vw;
+    border: 0.2rem black solid;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+    margin: 2px 0;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;  
+    width: 30vw;
+    height: 15vh;
+    align-items: center;
+    border: 0.2rem black solid;
+    border-radius: 0.5rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.comment-btns-group {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.comment-btn {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin: 5px 5px;
+}
+
 footer {
     position: fixed;
     width: 100%;
@@ -308,3 +419,13 @@ footer {
     font-weight: bold;
     height: 10vh;
 }
+
+.auth-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 75vh;
+
+}
+
