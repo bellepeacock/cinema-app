@@ -1,38 +1,39 @@
 {{#unless user}}
-  <h2>Signup</h2>
-  
-  <form action="/signup" method="POST" id="form-container">
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" name="email">
+  {{!-- <h2>Signup</h2> --}}
+ <div class="auth-container">
+  <form action="/signup" class="auth-form" method="POST" id="form-container">
+    <div class="auth-single">
+      <label for="email" class="form-label">Email </label>
+      <input type="email" name="email" class="form-entry">
     </div>
 
-    <div>
-      <label for="username">Username</label>
-      <input id="username" type="text" name="username">
+    <div class="auth-single">
+      <label for="username" class="form-label">Username </label>
+      <input id="username" type="text" name="username" class="form-entry">
     </div>
     
-    <div>
-      <label for="password">Password</label>
-      <input id="password" type="password" name="password">
+    <div class="auth-single">
+      <label for="password" class="form-label">Password </label>
+      <input id="password" type="password" name="password" class="form-entry">
     </div>
-
-      <a href="/auth/google">Login With Google</a>
     
     {{#if errorMessage}}
       <div class="error-message">{{errorMessage}}</div>
     {{/if}}
     
     <div>
-      <button type="submit">Create account</button>
-      {{!-- this needs to submit or do something! Submit or redirect to home page--}}
+      <button type="submit" class="auth-btn">Create account</button>
+        <p>
+          <a href="/auth/google" style="text-decoration:none;" class="google-auth">Login With Google </a>
+        </p>   
     </div>
     
     <p class="account-message">
       Do you already have an account?
-      <a href="/login">Login</a>
+      <a href="/login" style="text-decoration:none;" class="auth-btn">Login</a>
     </p>
     
   </form>
+  </div> 
 
 {{/unless}}

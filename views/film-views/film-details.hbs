@@ -25,33 +25,39 @@
 </article>
 
 {{!-- film api should have the location and language stuff --}}
-
+<div class="comment-section">
 <h3>Comments:</h3>
            
 
-    <ul>{{#each filmFromDbWithComments}}
-        <li>
+    <ul list-style-type="none" class="comment-list">{{#each filmFromDbWithComments}}
+        <li class="comment" >
             <p>{{this.username}}</p>
             <p>{{this.content}}</p>
            {{#if isUserName}}
-               <form action="{{filmId}}/edit" method="get">
-                   <button type="submit"> edit</button>
-               </form>
-               <form action="{{id}}/delete/{{filmId}}" method="post">
-                   <button type="submit">delete</button>
-               </form>
+            <div class="comment-btns-group">
+                <form action="{{filmId}}/edit" method="get">
+                    <button class="comment-btn" type="submit"> edit</button>
+                </form>
+                <form action="{{id}}/delete/{{filmId}}" method="post">
+                    <button class="comment-btn" type="submit">delete</button>
+                </form>
+            </div>  
             {{/if}}
 
             </li>
         {{/each}}
+        <li list-style-type="none">
+            <form action="/films/{{filmFromAPI.id}}" method="post" name="comment-form" style="padding-bottom: 100px;">
+            {{!-- <p>HERE IS THE ID: {{film._id}}</p> --}}
+            {{!-- <input type="text" name="username" placeholder="Type your name here..."> --}}
+            <textarea class="comment-form" name="content" cols="100" rows="20"  placeholder="Type your comment here..."></textarea>
+            <input class="comment-btn" type="submit" />
+</form>
+        </li>
     </ul>
 
-<form action="/films/{{filmFromAPI.id}}" method="post" name="comment-form" style="padding-bottom: 100px;">
-{{!-- <p>HERE IS THE ID: {{film._id}}</p> --}}
-{{!-- <input type="text" name="username" placeholder="Type your name here..."> --}}
-<textarea name="content" cols="100" rows="20"  placeholder="Type your comment here..."></textarea>
-<input type="submit" />
-</form>
+
+</div>
 
 
 
