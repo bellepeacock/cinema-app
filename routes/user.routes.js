@@ -19,13 +19,9 @@ router.post('/signup', (req, res, next) => {
   if (!username || !email || !password) {
     res.render('auth-views/signup', { errorMessage: 'Indicate username and password' });
     return;
-  }
 
-  User.find().then(u => console.log(u)).catch(e => console.log(e))
-  console.log('User')
+  } 
 
-  Email.find().then(email => console.log(email)).catch(e => console.log(e))
-  console.log('Email')
  
   User.findOne({ username, email })
     .then(user => {
@@ -35,33 +31,35 @@ router.post('/signup', (req, res, next) => {
         return;
       }
 
+      
       const salt = bcrypt.genSaltSync(bcryptSalt);
       const hashPass = bcrypt.hashSync(password, salt);
- 
+      
       const newUser = new User({
         username,
         email,
         password: hashPass
       });
- 
+      
       newUser
-        .save()
-        .then(() => res.redirect('/'))
+      .save()
+      .then((createdUser) => {
+          res.redirect('/login')
+          req.session.currentUser = createdUser;
+        })
         .catch(err => next(err));
     })
     .catch(err => next(err));
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('auth-views/login', { errorMessage: req.flash('error') });
+  res.render('auth-views/login', { user: req.params });
 });
 
 router.post('/login', (req, res, next) => {
-  console.log('starting here')
     passport.authenticate('local', (err, theUser, failureDetails) => {
-      console.log(theUser)
+      console.log('theUser:', theUser, failureDetails);
         if (err) {
-          console.log('error')
             // sthing wrong with authenticating user
             return next(err);
         }
@@ -70,6 +68,9 @@ router.post('/login', (req, res, next) => {
             res.render('auth-views/login', { errorMessage:"Wrong login credentials"});
             return;
         }
+
+        req.session.currentUser = theUser; // req.login does not save in session
+        console.log('passport.session():', passport.session());
         //save the user in session
         req.login(theUser, err => {
             if (err) {
@@ -103,10 +104,19 @@ router.post(
   })
 );
 
+// router.post('/logout', function(req, res){
+//   req.logout();
+//   res.redirect('/');
+// });
+
 router.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/login');
+  req.session.destroy();
+  //find passport version of the next line:
+  // req.session.destroy;
+  res.redirect('/');
 });
+
+
 
 router.get(
   "/auth/google",

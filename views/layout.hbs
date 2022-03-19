@@ -13,7 +13,9 @@
     <header>
         <nav>
             <div id="header-logo">
-                <h1>CINEMA-APP <i class="fas fa-film" id="icon-cinema" ></i></h1>
+                <a href="/">
+                    <h1>SI!KINO <i class="fas fa-film" id="icon-cinema" ></i></h1>
+                </a>
             </div>
             <div id="header-search-bar">
                 <form action="" method="post">
@@ -25,21 +27,21 @@
                 </form>
             </div>
             <div id="header-auth">
-                {{#if user}}
+                {{!-- {{#if theUser}} --}}
                     <a href="/">Home</a>
                     <a href="/logout">Logout</a>
-                {{else}}
+                {{!-- {{else}} --}}
                     <a href="/login">Login</a>
                     <a href="/signup">Sign Up</a>
-                {{/if}}
+                {{!-- {{/if}} --}}
             </div>
         </nav>
     </header>
 
-    <section id="section-films">
+    <section>
         {{{body}}}
     </section>
-
+        
     <footer>
         By Annabelle & Rick for you. Happy coding! <i class="fas fa-heart liked"></i>
     </footer>

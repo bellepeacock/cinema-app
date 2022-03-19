@@ -1,0 +1,17 @@
+<div id="section-films">
+    <h1>FILMS</h1>
+    <div id="films">
+        {{#each films}}
+        {{#with this}}
+            <article>
+                <a href="/films/{{id}}" class="img-film">
+                    <img src="{{poster_image_thumbnail}}" alt="{{slug}}">
+                    <h5 class="details">----See Details----</h5>
+                </a>
+                <h4>{{title}} <i class="far fa-heart"></i></h4>
+            </article>
+        {{/with}}
+        {{/each}}
+    </div>
+</div>
+<script src="src/index.js"></script>

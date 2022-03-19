@@ -27,36 +27,21 @@
 {{!-- film api should have the location and language stuff --}}
 <div class="comment-section">
 <h3>Comments:</h3>
-
            
 
-    <ul list-style-type="none" class="comment-list">{{#each filmFromDbWithComments}}
-        <li class="comment" >
+    <ul  class="comment-list">{{#each filmFromDbWithComments}}
+         {{#if isUserName}}
+        <li class="comment" list-style-type="none">
             <p>{{this.username}}</p>
-
-            <p>{{this.content}}</p>
-           {{#if isUserName}}
-            <div class="comment-btns-group">
-                <form action="{{filmId}}/edit" method="get">
-                    <button class="comment-btn" type="submit"> edit</button>
-                </form>
-                <form action="{{id}}/delete/{{filmId}}" method="post">
-                    <button class="comment-btn" type="submit">delete</button>
-                </form>
-            </div>  
-            {{/if}}
-
-            </li>
-        {{/each}}
-        <li >
-            <form action="/films/{{filmFromAPI.id}}" method="post" name="comment-form" style="padding-bottom: 100px;">
-                <textarea class="comment-form" name="content" cols="100" rows="20"  placeholder="Type your comment here..."></textarea>
-                <input class="comment-btn" type="submit" />
+            <form action="/films/{{id}}/edit" method="post">
+                <input type="text" name="editInput" value="{{this.content}}">
+              <div style="display: none;">  <input type="text" name="filmID" value="{{filmId}}"></div>
+                <button class="comment-btn" type="submit">Save</button>
             </form>
-        </li>
+            </li>
+            {{/if}}
+        {{/each}}
     </ul>
-
-
 </div>
 
 
