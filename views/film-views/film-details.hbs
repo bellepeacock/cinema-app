@@ -46,13 +46,11 @@
 
             </li>
         {{/each}}
-        <li list-style-type="none">
+        <li >
             <form action="/films/{{filmFromAPI.id}}" method="post" name="comment-form" style="padding-bottom: 100px;">
-            {{!-- <p>HERE IS THE ID: {{film._id}}</p> --}}
-            {{!-- <input type="text" name="username" placeholder="Type your name here..."> --}}
-            <textarea class="comment-form" name="content" cols="100" rows="20"  placeholder="Type your comment here..."></textarea>
-            <input class="comment-btn" type="submit" />
-</form>
+                <textarea class="comment-form" name="content" cols="100" rows="20"  placeholder="Type your comment here..."></textarea>
+                <input class="comment-btn" type="submit" />
+            </form>
         </li>
     </ul>
 
