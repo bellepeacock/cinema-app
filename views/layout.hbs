@@ -18,11 +18,16 @@
                 </a>
             </div>
             <div id="header-search-bar">
-                <form action="" method="post">
+                <form action="/films" method="post" id="search-form">
                     <i class="fas fa-search"></i>
-                    <input type="text" name="search" placeholder="Title, artist, genre">
-                    <input type="text" name="location" placeholder="Location">
-                    <input type="text" name="language" placeholder="Language">
+                    <input type="text" name="title" placeholder="Title">
+                    <select type="text" name="language">
+                        <option value="en" selected>English</option>
+                        <option value="es">Spanish</option>
+                        <option value="de">German</option>
+                    </select>
+                    <input type="text" name="userLat" class="user-location">
+                    <input type="text" name="userLng" class="user-location">
                     <input type="submit" value="Search" id="submit">
                 </form>
             </div>

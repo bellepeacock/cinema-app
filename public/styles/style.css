@@ -51,7 +51,8 @@ nav {
 }
 
 #header-search-bar > form > input,
-#header-auth > a {
+#header-auth > a,
+select {
     text-decoration: none;
     font-weight: bold;
     border-radius: 0.5rem;
@@ -71,6 +72,10 @@ nav {
     font-weight: bold;
     text-shadow: 0 0.1rem black, 0 -0.1rem black, 0.1rem 0 black, -0.1rem 0 black, 0.1rem 0.1rem black, 0.1rem -0.1rem black, -0.1rem 0.1rem black, -0.1rem -0.1rem black;
     transition: 0.1s;
+}
+
+.user-location {
+    display: none;
 }
 
 #election {

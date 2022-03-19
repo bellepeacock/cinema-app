@@ -10,6 +10,31 @@ function changeHeartIcon(iconClasses){
     changeHeartIcon(event.target.classList);
 }));
 
+document.getElementById("search-form").addEventListener("submit", (event) => {
+    const navigator = window.navigator;
+    if (navigator.geolocation) {
+        // Get current position
+        // The permissions dialog will pop up
+        navigator.geolocation.getCurrentPosition((position) => {
+            // Create an object to match Google's Lat-Lng object format
+            const userLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            console.log('center: ', userLocation);
+
+            // User granted permission
+            // Add the longitud and the latitude to the user
+
+        }, () => {
+            console.log('Error in the geolocation service.');
+        });
+    } else {
+        console.log('Browser does not support geolocation.');
+    }
+    //event.preventDefault();
+});
+
 function startMaps() {
     [...document.getElementsByClassName("map")].forEach(cinemaMap => {
         const { lat, lng, name } = cinemaMap.attributes;

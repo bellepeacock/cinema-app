@@ -9,11 +9,18 @@ class ApiISService {
   }
 
   getFilms() {
-    return this.api.get('/movies/?page_size=18');
+    //const [ userLat, userLng ] = arguments;
+    return this.api.get(`/movies/?page_size=18`);
   }
 
-  getFilm(id) {
+  getFilmById() {
+    const [ id, userLat, userLng ] = arguments;
     return this.api.get(`/movies/${id}`);
+  }
+
+  getFilmByTitle(){
+    const [ title , language] = arguments;
+    //const [ title , language, userLat, userLng ] = arguments;
   }
 
   getCinemas() {

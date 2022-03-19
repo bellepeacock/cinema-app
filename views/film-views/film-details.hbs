@@ -1,7 +1,7 @@
 <article id="film-details" class="row">
     {{#with filmFromAPI}}
         <div class="col">
-            <img src="{{poster_image.image_files.6.url}}" alt="{{slug}}">
+            <img src="{{#if poster_image.image_files}}{{poster_image.image_files.6.url}} {{else}} {{poster_image}} {{/if}} " alt="{{slug}}">
             <h4><span class="big">{{title}}</span> <i class="far fa-heart"></i></h4>
             <h5>directed by: <span class="big">{{crew.0.name}}</span> </h5>          
         </div>
