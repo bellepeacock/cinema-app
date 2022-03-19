@@ -32,7 +32,7 @@ router.get("/films", async (req, res, next) => {
 });
 
 router.post("/films", async (req, res, next) => {
-    const { title, language, userLat, userLng } = req.body;
+    const { title, language } = req.body;
     try {
         const resFromApi = await apiIS.getFilmByTitle(title, language);
         const films = resFromApi.data.movies;
@@ -49,12 +49,12 @@ router.post("/films", async (req, res, next) => {
 
 // films/:id/details
 router.get("/films/:id", async (req, res, next) => {
-  const currentUser = req.session.currentUser.username;
+  const currentUser = req.session.currentUser;
 
   const filmId = req.params.id;
   try {
     //Obtaining the info (film details) from the API
-    const resFromApi = await apiIS.getFilm(filmId);
+    const resFromApi = await apiIS.getFilmById(filmId);
     const filmFromAPI = resFromApi.data.movie;
 
     checkImage(filmFromAPI);
@@ -73,29 +73,31 @@ router.get("/films/:id", async (req, res, next) => {
         },
       })
       .then((filmFromDbWithComments) => {
-        filmFromDbWithComments = filmFromDbWithComments.comments.map(
-          (element) => {
-              console.log("element",element)
-            if (element.username === currentUser) {
-              return {
-                username: element.username,
-                content: element.content,
-                isUserName: true,
-                filmId: filmId,
-                id:element._id
-              };
-            } else {
-              return {
-                username: element.username,
-                content: element.content,
-                isUserName: false,
-                filmId: filmId,
-                id:element._id
-              };
+          if (filmFromDbWithComments !== null) {
+            filmFromDbWithComments = filmFromDbWithComments.comments.map(
+            (element) => {
+                console.log("element",element);
+                if (element.username === currentUser) {
+                return {
+                    username: element.username,
+                    content: element.content,
+                    isUserName: true,
+                    filmId: filmId,
+                    id:element._id
+                };
+                } else {
+                return {
+                    username: element.username,
+                    content: element.content,
+                    isUserName: false,
+                    filmId: filmId,
+                    id:element._id
+                };
+                }
             }
+            );
           }
-        );
-
+        
         res.render("film-views/film-details", {
           filmFromAPI,
           filmFromDbWithComments,

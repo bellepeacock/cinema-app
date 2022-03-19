@@ -10,7 +10,7 @@ const User = require("../models/User.model");
 router.post("/films/:id", async (req, res, next) => {
   const id = req.params.id;
   console.log("req.session", req.session);
-  const username = req.session.currentUser.username; // <== Look this
+  const username = req.session.currentUser; // <== Look this
   const { content } = req.body; // <== And this
 
   try {
