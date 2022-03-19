@@ -19,7 +19,9 @@ router.post('/signup', (req, res, next) => {
   if (!username || !email || !password) {
     res.render('auth-views/signup', { errorMessage: 'Indicate username and password' });
     return;
+
   } 
+
  
   User.findOne({ username, email })
     .then(user => {
