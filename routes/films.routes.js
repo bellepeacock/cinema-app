@@ -35,7 +35,9 @@ router.post("/films", async (req, res, next) => {
     const { title, language } = req.body;
     try {
         const resFromApi = await apiIS.getFilmByTitle(title, language);
+        console.log(resFromApi);
         const films = resFromApi.data.movies;
+
         if(films.length === 1){
             res.redirect(`/films/${films[0].id}`);
         } else {
@@ -43,7 +45,7 @@ router.post("/films", async (req, res, next) => {
             res.render("film-views/films", { films } );
         }
     } catch (error) {
-        console.log(error.response);
+        console.log(error);
     }
 });
 

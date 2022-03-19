@@ -21,6 +21,7 @@ class ApiISService {
   getFilmByTitle(){
     const [ title , language] = arguments;
     //const [ title , language, userLat, userLng ] = arguments;
+    return this.api.get(`/movies?search_query=${title}&search_field=title&lang=${language}`);
   }
 
   getCinemas() {
