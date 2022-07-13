@@ -49,7 +49,7 @@ router.post("/films", async (req, res, next) => {
     }
 });
 
-// films/:id/details
+// films/:id
 router.get("/films/:id", async (req, res, next) => {
   const currentUser = req.session.currentUser;
 
@@ -100,6 +100,8 @@ router.get("/films/:id", async (req, res, next) => {
             );
           }
         
+          
+          console.log(filmFromDbWithComments);
         res.render("film-views/film-details", {
           filmFromAPI,
           filmFromDbWithComments,
